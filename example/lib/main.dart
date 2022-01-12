@@ -1,3 +1,4 @@
+import 'package:app/pages/read_only_page.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: ReadOnlyPage(),
     );
   }
 }

@@ -64,7 +64,10 @@ class _DemoScaffoldState extends State<DemoScaffold> {
             document: doc, selection: const TextSelection.collapsed(offset: 0));
         _loading = false;
       });
-    } catch (error) {
+    } catch (error, stacktrace) {
+      print('==== parse error ====');
+      print(error);
+      print(stacktrace);
       final doc = Document()..insert(0, 'Empty asset');
       setState(() {
         _controller = QuillController(
@@ -86,12 +89,17 @@ class _DemoScaffoldState extends State<DemoScaffold> {
   @override
   Widget build(BuildContext context) {
     final actions = widget.actions ?? <Widget>[];
-    var toolbar = QuillToolbar.basic(controller: _controller!);
-    if (_isDesktop()) {
-      toolbar = QuillToolbar.basic(
-          controller: _controller!,
-          filePickImpl: openFileSystemPickerForDesktop);
-    }
+    // var toolbar;
+    // try {
+    //   toolbar = QuillToolbar.basic(controller: _controller!);
+    // } catch (e) {
+    //   // TODO
+    // }
+    // if (_isDesktop()) {
+    //   toolbar = QuillToolbar.basic(
+    //       controller: _controller!,
+    //       filePickImpl: openFileSystemPickerForDesktop);
+    // }
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -107,7 +115,7 @@ class _DemoScaffoldState extends State<DemoScaffold> {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        title: _loading || !widget.showToolbar ? null : toolbar,
+        title: const Text('Test emoji'),
         actions: actions,
       ),
       floatingActionButton: widget.floatingActionButton,

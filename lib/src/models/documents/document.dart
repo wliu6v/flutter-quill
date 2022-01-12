@@ -230,6 +230,22 @@ class Document {
     if (data is Embeddable) {
       return data;
     }
+
+    // #region ---- Custom ----
+
+    // Failed to parse emoji as String... Need more try.
+    // final m = Map<String, dynamic>.from(data as Map<String, dynamic>);
+    // if (m.length == 1) {
+    //   final type = m.keys.first;
+    //   if (type == 'emoji') {
+    //     // consider emoji as normal text.
+    //     final String emojiCode = (m[type] as Map<String, dynamic>)['unicode'];
+    //     return String.fromCharCode(int.parse(emojiCode, radix: 16));
+    //   }
+    // }
+
+    // #endregion ---- Custom ----
+
     return Embeddable.fromJson(data as Map<String, dynamic>);
   }
 

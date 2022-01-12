@@ -36,6 +36,7 @@ class _ReadOnlyPageState extends State<ReadOnlyPage> {
       focusNode: _focusNode,
       autoFocus: true,
       readOnly: !_edit,
+      showCursor: false,
       expands: false,
       padding: EdgeInsets.zero,
     );
@@ -48,6 +49,7 @@ class _ReadOnlyPageState extends State<ReadOnlyPage> {
           autoFocus: true,
           readOnly: !_edit,
           expands: false,
+          showCursor: false,
           padding: EdgeInsets.zero,
           embedBuilder: defaultEmbedBuilderWeb);
     }

@@ -229,6 +229,9 @@ Widget defaultEmbedBuilder(
             videoUrl: videoUrl, context: context, readOnly: readOnly);
       }
       return VideoApp(videoUrl: videoUrl, context: context, readOnly: readOnly);
+    case 'emoji':
+      final emojiCode = node.value.data;
+      return Text(emojiCode);
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '
