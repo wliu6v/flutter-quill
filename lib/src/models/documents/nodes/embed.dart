@@ -1,3 +1,5 @@
+import 'custom/mention.dart';
+
 /// An object which can be embedded into a Quill document.
 ///
 /// See also:
@@ -28,11 +30,18 @@ class Embeddable {
       final String emojiCode = (m[key] as Map<String, dynamic>)['unicode'];
       return BlockEmbed(
           key, String.fromCharCode(int.parse(emojiCode, radix: 16)));
+    } else if (key == 'mention') {
+      final mention = Mention.fromJson(m[key] as Map<String, dynamic>);
+      return BlockEmbed(key, mention.toPlainText());
     }
 
     // #endregion ---- custom ----
 
-    return BlockEmbed(m.keys.first, m.values.first);
+    if (!(m.values.first is String)) {
+      return BlockEmbed(m.keys.first, m.values.first.toString());
+    } else {
+      return BlockEmbed(m.keys.first, m.values.first);
+    }
   }
 }
 

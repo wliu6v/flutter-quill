@@ -232,6 +232,8 @@ Widget defaultEmbedBuilder(
     case 'emoji':
       final emojiCode = node.value.data;
       return Text(emojiCode);
+    case 'mention':
+      return Text(node.value.data);
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '
