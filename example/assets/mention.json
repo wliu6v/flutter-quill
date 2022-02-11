@@ -1,0 +1,37 @@
+[
+  {
+    "insert": "this is test mention topic : "
+  },
+  {
+    "insert":
+    {
+      "mention":
+      {
+        "index": "0",
+        "denotationChar": "",
+        "id": "35841",
+        "value": "test-topic1",
+        "target": "t"
+      }
+    }
+  },
+  {
+    "insert": " \n"
+  },
+  {
+    "insert":
+    {
+      "mention":
+      {
+        "index": "0",
+        "denotationChar": "@",
+        "id": "1247",
+        "value": "felix",
+        "target": "u"
+      }
+    }
+  },
+  {
+    "insert": " d\n"
+  }
+]
