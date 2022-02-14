@@ -13,13 +13,13 @@ import 'node.dart';
 
 /// A line of rich text in a Quill document.
 ///
-/// Line serves as a container for [Leaf]s, like [Text] and [Embed].
+/// Line serves as a container for [Leaf]s, like [TextLeaf] and [Embed].
 ///
 /// When a line contains an embed, it fully occupies the line, no other embeds
 /// or text nodes are allowed.
 class Line extends Container<Leaf?> {
   @override
-  Leaf get defaultChild => Text();
+  Leaf get defaultChild => TextLeaf();
 
   @override
   int get length => super.length + 1;

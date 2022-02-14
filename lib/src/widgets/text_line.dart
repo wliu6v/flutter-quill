@@ -274,7 +274,7 @@ class _TextLineState extends State<TextLine> {
 
   TextSpan _getTextSpanFromNode(
       DefaultStyles defaultStyles, Node node, Style lineStyle) {
-    final textNode = node as leaf.Text;
+    final textNode = node as leaf.TextLeaf;
     final nodeStyle = textNode.style;
     final isLink = nodeStyle.containsKey(Attribute.link.key) &&
         nodeStyle.attributes[Attribute.link.key]!.value != null;
@@ -288,8 +288,12 @@ class _TextLineState extends State<TextLine> {
     );
   }
 
-  TextStyle _getInlineTextStyle(leaf.Text textNode, DefaultStyles defaultStyles,
-      Style nodeStyle, Style lineStyle, bool isLink) {
+  TextStyle _getInlineTextStyle(
+      leaf.TextLeaf textNode,
+      DefaultStyles defaultStyles,
+      Style nodeStyle,
+      Style lineStyle,
+      bool isLink) {
     var res = const TextStyle(); // This is inline text style
     final color = textNode.style.attributes[Attribute.color.key];
 
@@ -1076,7 +1080,7 @@ class RenderEditableTextLine extends RenderEditableBox {
 
       if (inlineCodeStyle.backgroundColor != null) {
         for (final item in line.children) {
-          if (item is! leaf.Text ||
+          if (item is! leaf.TextLeaf ||
               !item.style.containsKey(Attribute.inlineCode.key)) {
             continue;
           }
