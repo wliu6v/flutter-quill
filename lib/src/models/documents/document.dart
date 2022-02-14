@@ -232,16 +232,15 @@ class Document {
     }
 
     // #region ---- Custom ----
+    /// 对于 plain text， 在这里进行解析并且返回 String
+    /// 对于特定模块，需要在 embed 类中进行解析并返回 BlockEmbed
+    /// 但在这里返回 String 之后，需要另外在 quill_delta 的 Operation 的解析的地方也同步的修改，否则无法处理 length 的问题。
 
-    // Failed to parse emoji as String... Need more try.
-    // final m = Map<String, dynamic>.from(data as Map<String, dynamic>);
-    // if (m.length == 1) {
-    //   final type = m.keys.first;
-    //   if (type == 'emoji') {
-    //     // consider emoji as normal text.
-    //     final String emojiCode = (m[type] as Map<String, dynamic>)['unicode'];
-    //     return String.fromCharCode(int.parse(emojiCode, radix: 16));
-    //   }
+    // final m = data as Map<String, dynamic>;
+    // final key = m.keys.first;
+    // if (key == BlockEmbed.mentionType) {
+    //   final mention = Mention.fromJson(m[key] as Map<String, dynamic>);
+    //   return mention.toPlainText();
     // }
 
     // #endregion ---- Custom ----

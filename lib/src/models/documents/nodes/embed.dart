@@ -26,11 +26,11 @@ class Embeddable {
 
     // #region ---- custom ----
     final key = m.keys.first;
-    if (key == 'emoji') {
+    if (key == BlockEmbed.emojiType) {
       final String emojiCode = (m[key] as Map<String, dynamic>)['unicode'];
       return BlockEmbed(
           key, String.fromCharCode(int.parse(emojiCode, radix: 16)));
-    } else if (key == 'mention') {
+    } else if (key == BlockEmbed.mentionType) {
       final mention = Mention.fromJson(m[key] as Map<String, dynamic>);
       return BlockEmbed(key, mention.toPlainText());
     }
@@ -65,4 +65,6 @@ class BlockEmbed extends Embeddable {
 
   static const String emojiType = 'emoji';
   static BlockEmbed emoji(String emojiCode) => BlockEmbed(emojiType, emojiCode);
+
+  static const String mentionType = 'mention';
 }

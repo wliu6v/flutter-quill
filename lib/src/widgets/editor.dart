@@ -8,6 +8,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_quill/models/documents/nodes/embed.dart';
 import 'package:string_validator/string_validator.dart';
 
 import '../models/documents/document.dart';
@@ -169,7 +170,7 @@ Widget defaultEmbedBuilder(
     BuildContext context, leaf.Embed node, bool readOnly) {
   assert(!kIsWeb, 'Please provide EmbedBuilder for Web');
   switch (node.value.type) {
-    case 'image':
+    case BlockEmbed.imageType:
       final imageUrl = _standardizeImageUrl(node.value.data);
       var image;
       final style = node.style.attributes['style'];
@@ -222,17 +223,17 @@ Widget defaultEmbedBuilder(
                         )));
           },
           child: image);
-    case 'video':
+    case BlockEmbed.videoType:
       final videoUrl = node.value.data;
       if (videoUrl.contains('youtube.com') || videoUrl.contains('youtu.be')) {
         return YoutubeVideoApp(
             videoUrl: videoUrl, context: context, readOnly: readOnly);
       }
       return VideoApp(videoUrl: videoUrl, context: context, readOnly: readOnly);
-    case 'emoji':
+    case BlockEmbed.emojiType:
       final emojiCode = node.value.data;
       return Text(emojiCode);
-    case 'mention':
+    case BlockEmbed.mentionType:
       return Text(node.value.data);
     default:
       throw UnimplementedError(
