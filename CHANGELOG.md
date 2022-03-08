@@ -1,3 +1,6 @@
+# [metaforo+2]
+* Add mention support.
+
 # [metaforo+1]
 * Add Emoji support.
 
