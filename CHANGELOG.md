@@ -1,3 +1,6 @@
+# [metaforo+4]
+* Hide Text when export.
+
 # [metaforo+3]
 * Remove last \n check for document.
 
