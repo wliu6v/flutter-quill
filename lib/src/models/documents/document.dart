@@ -324,7 +324,8 @@ class Document {
       throw ArgumentError.value(doc, 'Document Delta cannot be empty.');
     }
 
-    assert((doc.last.data as String).endsWith('\n'));
+    // metaforo's topic not ends with \n.
+    // assert((doc.last.data as String).endsWith('\n'));
 
     var offset = 0;
     for (final op in doc.toList()) {

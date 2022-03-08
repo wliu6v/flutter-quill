@@ -1,3 +1,6 @@
+# [metaforo+3]
+* Remove last \n check for document.
+
 # [metaforo+2]
 * Add mention support.
 
