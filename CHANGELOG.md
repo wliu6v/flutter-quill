@@ -1,3 +1,6 @@
+# [metaforo+1]
+* Add Emoji support.
+
 # [4.0.8]
 * Fix blank lines do not display when --web-renderer=html.
 

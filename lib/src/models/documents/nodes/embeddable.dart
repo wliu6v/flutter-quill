@@ -19,7 +19,17 @@ class Embeddable {
 
   static Embeddable fromJson(Map<String, dynamic> json) {
     final m = Map<String, dynamic>.from(json);
-    assert(m.length == 1, 'Embeddable map must only have one key');
+    assert(m.length == 1,
+        'Embeddable map must only have one key. Origin json is $json');
+
+    // region ---- custom ----
+    final key = m.keys.first;
+    if (key == BlockEmbed.emojiType) {
+      final String emojiCode = (m[key] as Map<String, dynamic>)['unicode'];
+      return BlockEmbed(
+          key, String.fromCharCode(int.parse(emojiCode, radix: 16)));
+    }
+    // endregion ---- custom ----
 
     return BlockEmbed(m.keys.first, m.values.first);
   }
@@ -32,8 +42,14 @@ class BlockEmbed extends Embeddable {
   const BlockEmbed(String type, String data) : super(type, data);
 
   static const String imageType = 'image';
+
   static BlockEmbed image(String imageUrl) => BlockEmbed(imageType, imageUrl);
 
   static const String videoType = 'video';
+
   static BlockEmbed video(String videoUrl) => BlockEmbed(videoType, videoUrl);
+
+  static const String emojiType = 'emoji';
+
+  static BlockEmbed emoji(String emojiCode) => BlockEmbed(emojiType, emojiCode);
 }

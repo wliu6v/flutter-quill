@@ -141,6 +141,9 @@ Widget defaultEmbedBuilder(BuildContext context, QuillController controller,
             videoUrl: videoUrl, context: context, readOnly: readOnly);
       }
       return VideoApp(videoUrl: videoUrl, context: context, readOnly: readOnly);
+    case BlockEmbed.emojiType:
+      final emojiCode = node.value.data;
+      return Text(emojiCode);
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '
