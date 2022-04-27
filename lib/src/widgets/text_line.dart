@@ -292,7 +292,7 @@ class _TextLineState extends State<TextLine> {
 
   TextStyle _getInlineTextStyle(leaf.Text textNode, DefaultStyles defaultStyles,
       Style nodeStyle, Style lineStyle, bool isLink) {
-    var res = const TextStyle(); // This is inline text style
+    var res = TextStyle(color: defaultStyles.color);
     final color = textNode.style.attributes[Attribute.color.key];
 
     <String, TextStyle?>{
