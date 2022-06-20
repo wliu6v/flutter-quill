@@ -146,6 +146,8 @@ Widget defaultEmbedBuilder(BuildContext context, QuillController controller,
       return Text(emojiCode);
     case BlockEmbed.mentionType:
       return Text(node.value.data);
+    case BlockEmbed.emptyType:
+      return const SizedBox();
     default:
       throw UnimplementedError(
         'Embeddable type "${node.value.type}" is not supported by default '

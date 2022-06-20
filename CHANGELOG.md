@@ -1,3 +1,9 @@
+# [metaforo+6]
+* Fix empty mention block.
+
+# [metaforo+5]
+* Fix color property not work.
+
 # [metaforo+4]
 * Hide Text when export.
 
