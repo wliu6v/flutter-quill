@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color stringToColor(String? s) {
+Color? stringToColor(String? s) {
   switch (s) {
     case 'transparent':
       return Colors.transparent;
@@ -113,7 +113,8 @@ Color stringToColor(String? s) {
   }
 
   if (!s.startsWith('#')) {
-    throw 'Color code not supported';
+    return null;
+    // throw 'Color code not supported';
   }
 
   var hex = s.replaceFirst('#', '');

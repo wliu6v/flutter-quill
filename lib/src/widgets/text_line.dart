@@ -307,7 +307,7 @@ class _TextLineState extends State<TextLine> {
         if (k == Attribute.underline.key || k == Attribute.strikeThrough.key) {
           var textColor = defaultStyles.color;
           if (color?.value is String) {
-            textColor = stringToColor(color?.value);
+            textColor = stringToColor(color?.value) ?? defaultStyles.color;
           }
           res = _merge(res.copyWith(decorationColor: textColor),
               s!.copyWith(decorationColor: textColor));
@@ -361,7 +361,7 @@ class _TextLineState extends State<TextLine> {
     if (color != null && color.value != null) {
       var textColor = defaultStyles.color;
       if (color.value is String) {
-        textColor = stringToColor(color.value);
+        textColor = stringToColor(color.value) ?? defaultStyles.color;
       }
       if (textColor != null) {
         res = res.merge(TextStyle(color: textColor));

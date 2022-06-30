@@ -1,3 +1,6 @@
+# [metaforo+7]
+* Fix exception when occured wrong color tag.
+
 # [metaforo+6]
 * Fix empty mention block.
 
