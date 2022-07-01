@@ -1,3 +1,6 @@
+# [metaforo+8]
+* Fix color for placeholder.
+
 # [metaforo+7]
 * Fix exception when occured wrong color tag.
 

@@ -320,6 +320,10 @@ class _TextLineState extends State<TextLine> {
       }
     });
 
+    if (nodeStyle.attributes.containsKey('placeholder')) {
+      res = _merge(res, defaultStyles.placeHolder!.style);
+    }
+
     if (nodeStyle.containsKey(Attribute.inlineCode.key)) {
       res = _merge(res, defaultStyles.inlineCode!.styleFor(lineStyle));
     }
