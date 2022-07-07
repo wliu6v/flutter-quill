@@ -1,5 +1,7 @@
 import 'dart:math' as math;
 
+import 'package:flutter/cupertino.dart';
+
 import '../../quill_delta.dart';
 import '../style.dart';
 import 'embeddable.dart';
@@ -27,8 +29,9 @@ abstract class Leaf extends Node {
 
   @override
   void applyStyle(Style value) {
-    assert(value.isInline || value.isIgnored || value.isEmpty,
-        'Unable to apply Style to leaf: $value');
+    // debugPrint('value :${value.attributes}, ${value.isInline}, ${value.isIgnored}, ${value.isEmpty}');
+    // assert(value.isInline || value.isIgnored || value.isEmpty || value.single.key == 'code-block',
+    //     'Unable to apply Style to leaf: $value');
     super.applyStyle(value);
   }
 

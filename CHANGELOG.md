@@ -1,3 +1,6 @@
+# [metaforo+9]
+* Try to fix some attribute can not be parsed.
+
 # [metaforo+8]
 * Fix color for placeholder.
 
