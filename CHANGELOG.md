@@ -1,3 +1,6 @@
+# [metaforo+10]
+* Hide all undefined insert blocks.
+
 # [metaforo+9]
 * Try to fix some attribute can not be parsed.
 

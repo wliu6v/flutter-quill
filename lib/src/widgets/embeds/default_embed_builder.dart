@@ -149,11 +149,13 @@ Widget defaultEmbedBuilder(BuildContext context, QuillController controller,
     case BlockEmbed.emptyType:
       return const SizedBox();
     default:
-      throw UnimplementedError(
-        'Embeddable type "${node.value.type}" is not supported by default '
-        'embed builder of QuillEditor. You must pass your own builder function '
-        'to embedBuilder property of QuillEditor or QuillField widgets.',
-      );
+      // ignore all unknown tag.
+      return const SizedBox();
+      // throw UnimplementedError(
+      //   'Embeddable type "${node.value.type}" is not supported by default '
+      //   'embed builder of QuillEditor. You must pass your own builder function '
+      //   'to embedBuilder property of QuillEditor or QuillField widgets.',
+      // );
   }
 }
 
