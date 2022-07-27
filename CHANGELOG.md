@@ -1,3 +1,6 @@
+# [metaforo+11]
+* Upgrade for flutter sdk 3.2.0
+
 # [metaforo+10]
 * Hide all undefined insert blocks.
 
