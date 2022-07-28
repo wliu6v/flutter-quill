@@ -1,5 +1,8 @@
+# [metaforo+12]
+* Use XFile instead of File for web compatible
+
 # [metaforo+11]
-* Upgrade for flutter sdk 3.2.0
+* Upgrade for flutter sdk 3.0.5
 
 # [metaforo+10]
 * Hide all undefined insert blocks.

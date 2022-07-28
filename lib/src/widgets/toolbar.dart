@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:i18n_extension/i18n_widget.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../models/documents/attribute.dart';
 import '../models/themes/quill_dialog_theme.dart';
@@ -37,8 +36,8 @@ export 'toolbar/toggle_check_list_button.dart';
 export 'toolbar/toggle_style_button.dart';
 export 'toolbar/video_button.dart';
 
-typedef OnImagePickCallback = Future<String?> Function(File file);
-typedef OnVideoPickCallback = Future<String?> Function(File file);
+typedef OnImagePickCallback = Future<String?> Function(XFile file);
+typedef OnVideoPickCallback = Future<String?> Function(XFile file);
 typedef FilePickImpl = Future<String?> Function(BuildContext context);
 typedef WebImagePickImpl = Future<String?> Function(
     OnImagePickCallback onImagePickCallback);

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cross_file/cross_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:filesystem_picker/filesystem_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -32,14 +33,54 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _loadFromAssets() async {
     try {
-      final result = await rootBundle.loadString('assets/sample_data.json');
+      // final result = await rootBundle.loadString('assets/sample_data2.json');
+      final result = '''[
+  {
+    "insert": "Ffff"
+  },
+  {
+    "insert": "\n",
+    "attributes":
+    {
+      "code-block": true
+    }
+  },
+  {
+    "insert": "Gffg"
+  },
+  {
+    "insert": "\n",
+    "attributes":
+    {
+      "code-block": true
+    }
+  },
+  {
+    "insert":
+    {
+      "hr": true
+    }
+  },
+  {
+    "insert": "Hhhhh"
+  },
+  {
+    "insert": "\n",
+    "attributes":
+    {
+      "code-block": true
+    }
+  }
+]''';
+      // final doc = Document();
       final doc = Document.fromJson(jsonDecode(result));
       setState(() {
         _controller = QuillController(
             document: doc, selection: const TextSelection.collapsed(offset: 0));
       });
     } catch (error) {
-      final doc = Document()..insert(0, 'Empty asset');
+      final doc = Document();
+      // final doc = Document()..insert(0, 'Empty asset');
       setState(() {
         _controller = QuillController(
             document: doc, selection: const TextSelection.collapsed(offset: 0));
@@ -61,7 +102,14 @@ class _HomePageState extends State<HomePage> {
         title: const Text(
           'Flutter Quill',
         ),
-        actions: [],
+        actions: [
+          IconButton(
+              onPressed: () {
+                debugPrint(JsonEncoder()
+                    .convert(_controller?.document.toDelta().toJson()));
+              },
+              icon: Icon(Icons.message))
+        ],
       ),
       drawer: Container(
         constraints:
@@ -113,33 +161,18 @@ class _HomePageState extends State<HomePage> {
               const Tuple2(0, 0),
               null),
           sizeSmall: const TextStyle(fontSize: 9),
+          color: Colors.blue,
+          placeHolder: DefaultTextBlockStyle(
+              const TextStyle(
+                fontSize: 15,
+                color: Colors.red,
+                height: 1.15,
+                fontWeight: FontWeight.w300,
+              ),
+              const Tuple2(16, 0),
+              const Tuple2(0, 0),
+              null),
         ));
-    if (kIsWeb) {
-      quillEditor = QuillEditor(
-          controller: _controller!,
-          scrollController: ScrollController(),
-          scrollable: true,
-          focusNode: _focusNode,
-          autoFocus: false,
-          readOnly: false,
-          placeholder: 'Add content',
-          expands: false,
-          padding: EdgeInsets.zero,
-          customStyles: DefaultStyles(
-            h1: DefaultTextBlockStyle(
-                const TextStyle(
-                  fontSize: 32,
-                  color: Colors.black,
-                  height: 1.15,
-                  fontWeight: FontWeight.w300,
-                ),
-                const Tuple2(16, 0),
-                const Tuple2(0, 0),
-                null),
-            sizeSmall: const TextStyle(fontSize: 9),
-          ),
-          embedBuilder: defaultEmbedBuilderWeb);
-    }
     var toolbar = QuillToolbar.basic(
       controller: _controller!,
       // provide a callback to enable picking images from device.
@@ -207,12 +240,12 @@ class _HomePageState extends State<HomePage> {
   // Renders the image picked by imagePicker from local file storage
   // You can also upload the picked image to any server (eg : AWS s3
   // or Firebase) and then return the uploaded image URL.
-  Future<String> _onImagePickCallback(File file) async {
+  Future<String> _onImagePickCallback(XFile file) async {
     // Copies the picked file from temporary cache to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();
-    final copiedFile =
-        await file.copy('${appDocDir.path}/${basename(file.path)}');
-    return copiedFile.path.toString();
+    var path = '${appDocDir.path}/${basename(file.path)}';
+    await file.saveTo(path);
+    return path;
   }
 
   Future<String?> _webImagePickImpl(
@@ -223,8 +256,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     // Take first, because we don't allow picking multiple files.
-    final fileName = result.files.first.name;
-    final file = File(fileName);
+    final file = XFile.fromData(result.files.first.bytes!, name: result.files.first.name);
 
     return onImagePickCallback(file);
   }
@@ -232,12 +264,12 @@ class _HomePageState extends State<HomePage> {
   // Renders the video picked by imagePicker from local file storage
   // You can also upload the picked video to any server (eg : AWS s3
   // or Firebase) and then return the uploaded video URL.
-  Future<String> _onVideoPickCallback(File file) async {
+  Future<String> _onVideoPickCallback(XFile file) async {
     // Copies the picked file from temporary cache to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();
-    final copiedFile =
-        await file.copy('${appDocDir.path}/${basename(file.path)}');
-    return copiedFile.path.toString();
+    String path = '${appDocDir.path}/${basename(file.path)}';
+    await file.saveTo(path);
+    return path;
   }
 
   // ignore: unused_element
