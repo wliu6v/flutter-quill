@@ -1,3 +1,6 @@
+# [metaforo+13]
+* Fix exception when occurred h4/h5/h6
+
 # [metaforo+12]
 * Use XFile instead of File for web compatible
 

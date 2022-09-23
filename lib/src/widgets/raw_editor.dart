@@ -259,6 +259,7 @@ class RawEditorState extends EditorState
 
   // Focus
   bool _didAutoFocus = false;
+
   bool get _hasFocus => widget.focusNode.hasFocus;
 
   // Theme
@@ -268,6 +269,7 @@ class RawEditorState extends EditorState
   @override
   List<Tuple2<int, Style>> get pasteStyle => _pasteStyle;
   List<Tuple2<int, Style>> _pasteStyle = <Tuple2<int, Style>>[];
+
   @override
   String get pastePlainText => _pastePlainText;
   String _pastePlainText = '';
@@ -511,9 +513,8 @@ class RawEditorState extends EditorState
         case 2:
           return defaultStyles!.h2!.verticalSpacing;
         case 3:
-          return defaultStyles!.h3!.verticalSpacing;
         default:
-          throw 'Invalid level $level';
+          return defaultStyles!.h3!.verticalSpacing;
       }
     }
 
@@ -1406,6 +1407,7 @@ class _DocumentBoundary extends _TextBoundary {
   @override
   TextPosition getLeadingTextBoundaryAt(TextPosition position) =>
       const TextPosition(offset: 0);
+
   @override
   TextPosition getTrailingTextBoundaryAt(TextPosition position) {
     return TextPosition(
