@@ -1,3 +1,6 @@
+# [metaforo+14]
+* upgrade device_info_plus version
+
 # [metaforo+13]
 * Fix exception when occurred h4/h5/h6
 
