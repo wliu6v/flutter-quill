@@ -1,3 +1,6 @@
+# [metaforo+15]
+* change unknown block's value from raw string to json string
+
 # [metaforo+14]
 * upgrade device_info_plus version
 

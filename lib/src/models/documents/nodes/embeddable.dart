@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'mention.dart';
 
 /// An object which can be embedded into a Quill document.
@@ -42,7 +44,7 @@ class Embeddable {
     // endregion ---- custom ----
 
     if (!(m.values.first is String)) {
-      return BlockEmbed(m.keys.first, m.values.first.toString());
+      return BlockEmbed(m.keys.first, jsonEncode(m.values.first));
     } else {
       return BlockEmbed(m.keys.first, m.values.first);
     }
