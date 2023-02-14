@@ -1143,6 +1143,24 @@ class RawEditorState extends EditorState
   void removeTextPlaceholder() {
     // TODO: implement removeTextPlaceholder
   }
+
+  @override
+  void didChangeInputControl(TextInputControl? oldControl, TextInputControl? newControl) {
+    // TODO: implement didChangeInputControl
+  }
+
+  @override
+  void performSelector(String selectorName) {
+    final intent = intentForMacOSSelector(selectorName);
+
+    if (intent != null) {
+      final primaryContext = primaryFocus?.context;
+      if (primaryContext != null) {
+        Actions.invoke(primaryContext, intent);
+      }
+    }
+  }
+
 }
 
 class _Editor extends MultiChildRenderObjectWidget {
