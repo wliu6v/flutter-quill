@@ -1,3 +1,6 @@
+# [metaforo+16]
+* remove i18n for flutter new version
+
 # [metaforo+15]
 * change unknown block's value from raw string to json string
 

@@ -5,7 +5,6 @@ import '../../models/documents/attribute.dart';
 import '../../models/rules/insert.dart';
 import '../../models/themes/quill_dialog_theme.dart';
 import '../../models/themes/quill_icon_theme.dart';
-import '../../translations/toolbar.i18n.dart';
 import '../controller.dart';
 import '../link.dart';
 import '../toolbar.dart';
@@ -76,7 +75,7 @@ class _LinkStyleButtonState extends State<LinkStyleButton> {
       },
       child: Tooltip(
         key: _toolTipKey,
-        message: 'Please first select some text to transform into a link.'.i18n,
+        message: 'Please first select some text to transform into a link.',
         child: QuillIconButton(
           highlightElevation: 0,
           hoverElevation: 0,
@@ -194,7 +193,7 @@ class _LinkDialogState extends State<_LinkDialog> {
             keyboardType: TextInputType.multiline,
             style: widget.dialogTheme?.inputTextStyle,
             decoration: InputDecoration(
-                labelText: 'Text'.i18n,
+                labelText: 'Text',
                 labelStyle: widget.dialogTheme?.labelTextStyle,
                 floatingLabelStyle: widget.dialogTheme?.labelTextStyle),
             autofocus: true,
@@ -206,7 +205,7 @@ class _LinkDialogState extends State<_LinkDialog> {
             keyboardType: TextInputType.multiline,
             style: widget.dialogTheme?.inputTextStyle,
             decoration: InputDecoration(
-                labelText: 'Link'.i18n,
+                labelText: 'Link',
                 labelStyle: widget.dialogTheme?.labelTextStyle,
                 floatingLabelStyle: widget.dialogTheme?.labelTextStyle),
             autofocus: true,
@@ -219,7 +218,7 @@ class _LinkDialogState extends State<_LinkDialog> {
         TextButton(
           onPressed: _canPress() ? _applyLink : null,
           child: Text(
-            'Ok'.i18n,
+            'Ok',
             style: widget.dialogTheme?.labelTextStyle,
           ),
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:i18n_extension/i18n_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../models/documents/attribute.dart';
@@ -436,9 +435,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return I18n(
-      initialLocale: locale,
-      child: multiRowsDisplay
+    return multiRowsDisplay
           ? Wrap(
               alignment: toolbarIconAlignment,
               runSpacing: 4,
@@ -450,7 +447,7 @@ class QuillToolbar extends StatelessWidget implements PreferredSizeWidget {
                   BoxConstraints.tightFor(height: preferredSize.height),
               color: color ?? Theme.of(context).canvasColor,
               child: ArrowIndicatedButtonList(buttons: children),
-            ),
+
     );
   }
 }

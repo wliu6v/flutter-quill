@@ -7,7 +7,6 @@ import 'package:tuple/tuple.dart';
 import '../../models/documents/attribute.dart';
 import '../../models/documents/nodes/embeddable.dart';
 import '../../models/documents/nodes/leaf.dart' as leaf;
-import '../../translations/toolbar.i18n.dart';
 import '../../utils/platform.dart';
 import '../../utils/string.dart';
 import '../controller.dart';
@@ -65,7 +64,7 @@ Widget defaultEmbedBuilder(BuildContext context, QuillController controller,
                     final resizeOption = _SimpleDialogItem(
                       icon: Icons.settings_outlined,
                       color: Colors.lightBlueAccent,
-                      text: 'Resize'.i18n,
+                      text: 'Resize',
                       onPressed: () {
                         Navigator.pop(context);
                         showCupertinoModalPopup<void>(
@@ -91,7 +90,7 @@ Widget defaultEmbedBuilder(BuildContext context, QuillController controller,
                     final copyOption = _SimpleDialogItem(
                       icon: Icons.copy_all_outlined,
                       color: Colors.cyanAccent,
-                      text: 'Copy'.i18n,
+                      text: 'Copy',
                       onPressed: () {
                         final imageNode =
                             getImageNode(controller, controller.selection.start)
@@ -105,7 +104,7 @@ Widget defaultEmbedBuilder(BuildContext context, QuillController controller,
                     final removeOption = _SimpleDialogItem(
                       icon: Icons.delete_forever_outlined,
                       color: Colors.red.shade200,
-                      text: 'Remove'.i18n,
+                      text: 'Remove',
                       onPressed: () {
                         final offset =
                             getImageNode(controller, controller.selection.start)
@@ -169,12 +168,12 @@ Widget _menuOptionsForReadonlyImage(
               final saveOption = _SimpleDialogItem(
                 icon: Icons.save,
                 color: Colors.greenAccent,
-                text: 'Save'.i18n,
+                text: 'Save',
                 onPressed: () {
                   imageUrl = appendFileExtensionToImageUrl(imageUrl);
                   GallerySaver.saveImage(imageUrl).then((_) {
                     ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('Saved'.i18n)));
+                        .showSnackBar(SnackBar(content: Text('Saved')));
                     Navigator.pop(context);
                   });
                 },
@@ -182,7 +181,7 @@ Widget _menuOptionsForReadonlyImage(
               final zoomOption = _SimpleDialogItem(
                 icon: Icons.zoom_in,
                 color: Colors.cyanAccent,
-                text: 'Zoom'.i18n,
+                text: 'Zoom',
                 onPressed: () {
                   Navigator.pushReplacement(
                       context,
