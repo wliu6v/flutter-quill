@@ -1,6 +1,7 @@
 name: flutter_quill
 description: A rich text editor supporting mobile and web (Demo App @ bulletjournal.us)
-version: 4.0.9+16
+version: 4.0.9+17
+# @6v 千万千万不要试图 merge flutter_quill 的上游，否则需要重写整个自定义 embed block 的逻辑。clasp 和 metaforo 里面都包含了大量自定义 embed 的逻辑，如果 merge 的话没个两天时间搞不定
 author: liuwei
 homepage: https://bulletjournal.us/home/index.html
 repository: https://github.com/singerdmx/flutter-quill
@@ -16,7 +17,7 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   flutter_keyboard_visibility: ^5.0.0
   image_picker: ^0.8.2
-  photo_view: ^0.13.0
+  photo_view: ^0.14.0
   quiver: ^3.0.0
   string_validator: ^0.3.0
   tuple: ^2.0.0

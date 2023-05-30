@@ -1,3 +1,6 @@
+# [metaforo+17]
+* upgrade for flutter version v3.10
+
 # [metaforo+16]
 * remove i18n for flutter new version
 

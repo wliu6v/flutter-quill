@@ -32,6 +32,7 @@ dependencies:
   filesystem_picker: ^3.0.0
   file_picker: ^5.0.0
   cross_file: ^0.3.3+1
+  tuple: ^2.0.1
   flutter_quill:
     path: ../
 

@@ -1557,7 +1557,7 @@ class RenderEditor extends RenderEditableContainerBox
 }
 
 class QuillVerticalCaretMovementRun
-    extends BidirectionalIterator<TextPosition> {
+    extends Iterator<TextPosition> {
   QuillVerticalCaretMovementRun._(
     this._editor,
     this._currentTextPosition,
