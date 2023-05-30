@@ -325,7 +325,7 @@ class _TextLineState extends State<TextLine> {
 
   TextStyle _getInlineTextStyle(leaf.Text textNode, DefaultStyles defaultStyles,
       Style nodeStyle, Style lineStyle, bool isLink) {
-    var res = const TextStyle(); // This is inline text style
+    var res = TextStyle(color: defaultStyles.color);
     final color = textNode.style.attributes[Attribute.color.key];
 
     <String, TextStyle?>{
@@ -361,6 +361,10 @@ class _TextLineState extends State<TextLine> {
       }
     }
 
+    if (nodeStyle.attributes.containsKey('placeholder')) {
+      res = _merge(res, defaultStyles.placeHolder!.style);
+    }
+
     if (nodeStyle.containsKey(Attribute.inlineCode.key)) {
       res = _merge(res, defaultStyles.inlineCode!.styleFor(lineStyle));
     }
@@ -390,7 +394,7 @@ class _TextLineState extends State<TextLine> {
     if (color != null && color.value != null) {
       var textColor = defaultStyles.color;
       if (color.value is String) {
-        textColor = stringToColor(color.value);
+        textColor = stringToColor(color.value) ?? defaultStyles.color;
       }
       if (textColor != null) {
         res = res.merge(TextStyle(color: textColor));

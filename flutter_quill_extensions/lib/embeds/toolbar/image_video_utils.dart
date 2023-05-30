@@ -1,9 +1,10 @@
 import 'dart:io';
 
+import 'package:cross_file/cross_file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/extensions.dart';
-import 'package:flutter_quill/flutter_quill.dart' hide Text;
+import 'package:flutter_quill/flutter_quill.dart' ;
 import 'package:flutter_quill/translations.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -142,7 +143,7 @@ class ImageVideoUtils {
       return null;
     }
 
-    return onImagePickCallback(File(pickedFile.path));
+    return onImagePickCallback(XFile(pickedFile.path));
   }
 
   static Future<String?> _pickImageDesktop(
@@ -152,7 +153,7 @@ class ImageVideoUtils {
     final filePath = await filePickImpl(context);
     if (filePath == null || filePath.isEmpty) return null;
 
-    final file = File(filePath);
+    final file = XFile(filePath);
     return onImagePickCallback(file);
   }
 
@@ -194,7 +195,7 @@ class ImageVideoUtils {
       return null;
     }
 
-    return onVideoPickCallback(File(pickedFile.path));
+    return onVideoPickCallback(XFile(pickedFile.path));
   }
 
   static Future<String?> _pickVideoDesktop(
@@ -204,7 +205,7 @@ class ImageVideoUtils {
     final filePath = await filePickImpl(context);
     if (filePath == null || filePath.isEmpty) return null;
 
-    final file = File(filePath);
+    final file = XFile(filePath);
     return onVideoPickCallback(file);
   }
 }

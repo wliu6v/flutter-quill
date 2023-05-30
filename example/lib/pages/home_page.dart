@@ -2,13 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cross_file/cross_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:filesystem_picker/filesystem_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/extensions.dart';
-import 'package:flutter_quill/flutter_quill.dart' hide Text;
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -307,12 +308,12 @@ class _HomePageState extends State<HomePage> {
   // Renders the image picked by imagePicker from local file storage
   // You can also upload the picked image to any server (eg : AWS s3
   // or Firebase) and then return the uploaded image URL.
-  Future<String> _onImagePickCallback(File file) async {
+  Future<String> _onImagePickCallback(XFile file) async {
     // Copies the picked file from temporary cache to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();
-    final copiedFile =
-        await file.copy('${appDocDir.path}/${basename(file.path)}');
-    return copiedFile.path.toString();
+    final path = '${appDocDir.path}/${basename(file.path)}';
+    await file.saveTo(path);
+    return path;
   }
 
   Future<String?> _webImagePickImpl(
@@ -324,7 +325,7 @@ class _HomePageState extends State<HomePage> {
 
     // Take first, because we don't allow picking multiple files.
     final fileName = result.files.first.name;
-    final file = File(fileName);
+    final file = XFile.fromData(result.files.first.bytes!, name: fileName);
 
     return onImagePickCallback(file);
   }
@@ -332,12 +333,12 @@ class _HomePageState extends State<HomePage> {
   // Renders the video picked by imagePicker from local file storage
   // You can also upload the picked video to any server (eg : AWS s3
   // or Firebase) and then return the uploaded video URL.
-  Future<String> _onVideoPickCallback(File file) async {
+  Future<String> _onVideoPickCallback(XFile file) async {
     // Copies the picked file from temporary cache to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();
-    final copiedFile =
-        await file.copy('${appDocDir.path}/${basename(file.path)}');
-    return copiedFile.path.toString();
+    final path = '${appDocDir.path}/${basename(file.path)}';
+    await file.saveTo(path);
+    return path;
   }
 
   // ignore: unused_element

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'mention.dart';
+
 /// An object which can be embedded into a Quill document.
 ///
 /// See also:
@@ -20,9 +22,31 @@ class Embeddable {
 
   static Embeddable fromJson(Map<String, dynamic> json) {
     final m = Map<String, dynamic>.from(json);
-    assert(m.length == 1, 'Embeddable map must only have one key');
+    assert(m.length == 1,
+        'Embeddable map must only have one key. Origin json is $json');
 
-    return Embeddable(m.keys.first, m.values.first);
+    // region ---- custom ----
+    final key = m.keys.first;
+    if (key == BlockEmbed.emojiType) {
+      final String emojiCode = (m[key] as Map<String, dynamic>)['unicode'];
+      return BlockEmbed(
+          key, String.fromCharCode(int.parse(emojiCode, radix: 16)));
+    } else if (key == BlockEmbed.mentionType) {
+      if (m[key] is Map<String, dynamic>) {
+        final mention = Mention.fromJson(m[key] as Map<String, dynamic>);
+        return BlockEmbed(key, mention.toPlainText());
+      } else {
+        // exception. return empty.
+        return BlockEmbed.empty();
+      }
+    }
+    // endregion ---- custom ----
+
+    if (!(m.values.first is String)) {
+      return BlockEmbed(m.keys.first, jsonEncode(m.values.first));
+    } else {
+      return BlockEmbed(m.keys.first, m.values.first);
+    }
   }
 }
 
@@ -33,9 +57,11 @@ class BlockEmbed extends Embeddable {
   const BlockEmbed(String type, String data) : super(type, data);
 
   static const String imageType = 'image';
+
   static BlockEmbed image(String imageUrl) => BlockEmbed(imageType, imageUrl);
 
   static const String videoType = 'video';
+
   static BlockEmbed video(String videoUrl) => BlockEmbed(videoType, videoUrl);
 
   static const String formulaType = 'formula';
@@ -44,6 +70,19 @@ class BlockEmbed extends Embeddable {
   static const String customType = 'custom';
   static BlockEmbed custom(CustomBlockEmbed customBlock) =>
       BlockEmbed(customType, customBlock.toJsonString());
+
+  static const String emojiType = 'emoji';
+
+  static BlockEmbed emoji(String emojiCode) => BlockEmbed(emojiType, emojiCode);
+
+  static const String mentionType = 'mention';
+
+  static BlockEmbed mention(Mention mention) =>
+      BlockEmbed(mentionType, mention.toPlainText());
+
+  static const String emptyType = 'empty';
+
+  static BlockEmbed empty() => const BlockEmbed(emojiType, '');
 }
 
 class CustomBlockEmbed extends BlockEmbed {

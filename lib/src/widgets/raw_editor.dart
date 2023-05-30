@@ -982,9 +982,8 @@ class RawEditorState extends EditorState
         case 2:
           return defaultStyles!.h2!.verticalSpacing;
         case 3:
-          return defaultStyles!.h3!.verticalSpacing;
         default:
-          throw 'Invalid level $level';
+          return defaultStyles!.h3!.verticalSpacing;
       }
     }
 
@@ -1696,6 +1695,7 @@ class RawEditorState extends EditorState
   void insertTextPlaceholder(Size size) {
     // this is needed for Scribble (Stylus input) in Apple platforms
     // and this package does not implement this feature
+    // TODO: implement insertTextPlaceholder
   }
 
   @override

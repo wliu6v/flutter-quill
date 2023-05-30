@@ -35,6 +35,8 @@ dependencies:
     path: ../
   flutter_quill_extensions:
     path: ../flutter_quill_extensions
+  cross_file: ^0.3.3+4
+
 
 dependency_overrides:
   flutter_quill:

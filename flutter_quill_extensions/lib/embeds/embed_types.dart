@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'dart:typed_data';
-
+import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 
-typedef OnImagePickCallback = Future<String?> Function(File file);
-typedef OnVideoPickCallback = Future<String?> Function(File file);
+typedef OnImagePickCallback = Future<String?> Function(XFile file);
+typedef OnVideoPickCallback = Future<String?> Function(XFile file);
 typedef FilePickImpl = Future<String?> Function(BuildContext context);
 typedef WebImagePickImpl = Future<String?> Function(
     OnImagePickCallback onImagePickCallback);

@@ -1,3 +1,52 @@
+# [metaforo+16]
+* remove i18n for flutter new version
+
+# [metaforo+15]
+* change unknown block's value from raw string to json string
+
+# [metaforo+14]
+* upgrade device_info_plus version
+
+# [metaforo+13]
+* Fix exception when occurred h4/h5/h6
+
+# [metaforo+12]
+* Use XFile instead of File for web compatible
+
+# [metaforo+11]
+* Upgrade for flutter sdk 3.0.5
+
+# [metaforo+10]
+* Hide all undefined insert blocks.
+
+# [metaforo+9]
+* Try to fix some attribute can not be parsed.
+
+# [metaforo+8]
+* Fix color for placeholder.
+
+# [metaforo+7]
+* Fix exception when occured wrong color tag.
+
+# [metaforo+6]
+* Fix empty mention block.
+
+# [metaforo+5]
+* Fix color property not work.
+
+# [metaforo+4]
+* Hide Text when export.
+
+# [metaforo+3]
+* Remove last \n check for document.
+
+# [metaforo+2]
+* Add mention support.
+
+# [metaforo+1]
+* Add Emoji support.
+
+
 # [7.2.1]
 - Add support for android keyboard content insertion.
 - Enhance color picker, enter hex color and color palette option.
@@ -988,6 +1037,7 @@ QuillToolbar.basic(
 
 # [1.3.4]
 
+<<<<<<< HEAD
 - Add option to paintCursorAboveText.
 
 # [1.3.3]
@@ -1249,3 +1299,7 @@ QuillToolbar.basic(
 # [0.0.1]
 
 - Rich text editor based on Quill Delta.
+=======
+## [0.0.1]
+* Rich text editor based on Quill Delta.
+>>>>>>> metaforo

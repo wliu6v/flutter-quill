@@ -341,6 +341,14 @@ mixin RawEditorStateTextInputClientMixin on EditorState
       _textInputConnection?.setEditableSizeAndTransform(size, transform);
       SchedulerBinding.instance
           .addPostFrameCallback((_) => _updateSizeAndTransform());
+      // SchedulerBinding.instance.addPostFrameCallback((_) {
+      //   if (!mounted) {
+      //     return;
+      //   }
+      //   final size = renderEditor.size;
+      //   final transform = renderEditor.getTransformTo(null);
+      //   _textInputConnection?.setEditableSizeAndTransform(size, transform);
+      // });
     }
   }
 }
