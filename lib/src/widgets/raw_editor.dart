@@ -1177,6 +1177,8 @@ class RawEditorState extends EditorState
     widget.contentInsertionConfiguration?.onContentInserted.call(content);
   }
 
+  @override
+  bool get liveTextInputEnabled => false;
 }
 
 class _Editor extends MultiChildRenderObjectWidget {
